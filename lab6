@@ -54,13 +54,18 @@ int main()
 	cout << "Is the catering done over the weekend? \n";
 	cin >> weekend;
 	
-	ifstream infile; 
-   	ofstream outfile; 
+ifstream infile; 
+ofstream outfile; 
+int ID, adults, kids;
+char meal_type;
+float total_meal_cost, tax, tip, surcharge, total_party_cost;
+
 infile.open ("c:\\temp\\myfile.dat");
 if (!infile)						//there was an error on open, file not found
 {	cout << "Cannot open file, terminating program"<< endl;
 exit (1);
 }
+	cout << "Open the output file. \n";
 	outfile.open ("c:\\temp\\newfile.dat);
 	infile >> name; 					//this is called a priming read, only used once
 	while (infile)						//or while (!infile.eof())
