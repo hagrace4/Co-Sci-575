@@ -1,0 +1,53 @@
+#include <iostream>
+#include <iomanip>
+
+
+void meal_cost(kids, meal_cost);
+void additional_cost(tip_calc, tax_calc, surcharge_calc);
+
+using namespace std;
+
+int main()
+{
+	//const variables
+	const float tax = .18;
+	const float kids_saving = .6;
+	const float tip = .18;
+	const float surcharge = .07;
+	//decalre variables
+	char meal_type;
+	char weekend;
+	float meal_cost;
+	int adults;
+	int kids;
+	float tip_Calc;
+	float tax_Calc;
+	float surcharge_calc;
+	int 
+
+
+
+}
+//Function 2
+{
+	void meal_cost(kids, meal_cost)
+		kids= (meal_type * kids_savings)
+		meal_cost= (meal_type * adults) + (meal_type * kids)
+}
+
+//Function 3
+
+{
+	void additional_cost(tip_calc, tax_calc, surcharge_calc);
+	tip_Calc = tip * meal_cost;
+	tax_Calc = tax * meal_cost;
+	subcharge_calc = subcharge * meal_cost;
+}
+
+//Function 4
+{
+
+
+	cout << ID << adults << kids << meal_cost << surcharge_calc;
+	cout << tax_calc << tip_calc << total_cost_of_party << deposit << total_balance_due << endl;
+}
