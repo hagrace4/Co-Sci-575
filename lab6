@@ -107,3 +107,7 @@ exit (1);
 	cout << surcharge_calc "\t\t" setw(10) << tax_calc "\t\t" setw(10) << tip_calc "\t\t" setw(10);
 	cout << total_cost_of_party "\t\t" setw(10) << deposit "\t\t" setw(10) << total_balance_due << endl;
 }
+
+return 0;
+system ("pause");
+}
