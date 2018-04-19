@@ -1,10 +1,10 @@
 #include <iostream>
 #include <iomanip>
-
+#include <fstream>
 
 void meal_cost(kids, meal_cost);
 void additional_cost(tip_calc, tax_calc, surcharge_calc);
-
+//function 3
 using namespace std;
 
 int main()
@@ -23,8 +23,36 @@ int main()
 	float tip_Calc;
 	float tax_Calc;
 	float surcharge_calc;
-	int 
+	int ID;
+	//do error validation,
+	cout << "Enter party ID \n";
+	cin >> ID;
 
+	cout << "What is the number of adults? \n";
+	cin >> adults;
+	if (adults < 0)
+	{
+		cout << "Error \n";
+		cin >> adults;
+	}
+	cout << "What is the number of children? \n";
+	cin >> kids;
+	if (kids< 0)
+	{
+		cout << "Error \n";
+		cin >> kids;
+	}
+
+	cout << "What is the meal type? \n";
+	cin >> meal_type;
+	if (meal_type != S || meal_type != D)
+	{
+		cout << "Error \n";
+		cin >> meal_type;
+	}
+
+	cout << "Is the catering done over the weekend? \n";
+	cin >> weekend;
 
 
 }
