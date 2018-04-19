@@ -85,23 +85,22 @@ exit (1);
 
 }
 //Function 2
+void meal_cost(kids, meal_cost)
 {
-	void meal_cost(kids, meal_cost)
 		kids= (meal_type * kids_savings)
 		meal_cost= (meal_type * adults) + (meal_type * kids)
 }
 
 //Function 3
-
+void additional_cost(tip_calc, tax_calc, surcharge_calc)
 {
-	void additional_cost(tip_calc, tax_calc, surcharge_calc);
 	tax_and_tip_Calc = tax_ * meal_cost;
 	subcharge_calc = subcharge * meal_cost;
 }
 
 //Function 4
+void Calc_total_and_output()
 {
-	void Calc_total_and_output();
 	Total_balance_due = meal_cost *tax_and_tip;
 	cout << ID "\t\t" setw(10) << adults "\t\t" setw(10) << kids "\t\t" setw(10) << meal_cost;
 	cout << surcharge_calc "\t\t" setw(10) << tax_calc "\t\t" setw(10) << tip_calc "\t\t" setw(10);
