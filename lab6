@@ -28,7 +28,10 @@ int main()
 	ofstream outfile;
 
 	cout << fixed << showpoint << setprecision(2);
-
+	cout << "Listen here you fucking drug addict scumbag weasel, we're tired of your shit. You went from a unique livestreamer who provided good content, \n";
+	cout << "to a guy who streams himself running errands.Your rationale behind this is that you need to do what makes you happy and not what makes the community \n";
+	cout << "happy.Get real, fucknut.You stream an average of 2 hours a day, buddy.You can do the things that make you happy on your own time.You may have surrounded yourself \n";
+	cout << "with a bunch of ego - massaging yes - men in LA, but we don't play that bullshit here. Fix your shit, or quit. \n";
 	do {
 		valid = true;
 		cout << "Enter party ID \n";
@@ -131,21 +134,23 @@ int main()
 			cin >> deposit;
 		}
 	} while (valid == false);
-	
+
+	// My code works fine till here, then I have all these errors about the functions even though they are comments (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+/*
 	infile.open("D:\\Input File");
 	if (!infile)						//there was an error on open, file not found
 	{
-	cout << "Cannot open file, terminating program" << endl;
-	exit(1);
+		cout << "Cannot open file, terminating program" << endl;
+		exit(1);
 	}
 	cout << "Open the output file. \n";
 	outfile.open("D:\\Output File");
 	infile >> num;
 
-	while (!infile.eof())						
+	while (!infile.eof())
 	{
-	outfile << " " << num << " ";
-	infile >> num;
+		outfile << " " << num << " ";
+		infile >> num;
 	}
 
 	outfile << "\t ID: " << ID << "\t\t";
@@ -160,30 +165,35 @@ int main()
 
 	infile.close();
 	outfile.close();
-	
-	}
-	//Function 2
-	void cost_of_meal(kids, meal_cost)
-	{
-	kids = (meal_type * kids_savings)
-	meal_cost = (meal_type * adults) + (meal_type * kids)
-	}
 
-	//Function 3
-	void additional_cost(tip_calc, tax_calc, surcharge_calc)
-	{
-	tax_and_tip_Calc = tax_ * meal_cost;
-	subcharge_calc = subcharge * meal_cost;
-	}
+}/*
+ //Function 1
 
-	//Function 4
-	void Calc_total_and_output()
-	{
-	Total_balance_due = meal_cost * tax_and_tip;
-	cout << ID << "\t\t" setw(10) << adults "\t\t" setw(10) << kids "\t\t" setw(10) << meal_cost;
-	cout << surcharge_calc << "\t\t" setw(10) << tax_and_tip_calc;
-	cout << total_cost_of_party << "\t\t" << setw(10) << deposit << "\t\t" << setw(10) << total_balance_due << endl;
-	}
-	return 0;
-	system("pause");
+ //Function 2
+ void cost_of_meal(kids, meal_cost)
+ {
+ kids = (meal_type * kids_savings)
+ meal_cost = (meal_type * adults) + (meal_type * kids)
+ }
+
+ //Function 3
+ void additional_cost(tip_calc, tax_calc, surcharge_calc)
+ {
+ tax_and_tip_Calc = tax_ * meal_cost;
+ subcharge_calc = subcharge * meal_cost;
+ }
+
+ //Function 4
+ void Calc_total_and_output()
+ {
+ Total_balance_due = meal_cost * tax_and_tip;
+ cout << ID << "\t\t" setw(10) << adults "\t\t" setw(10) << kids "\t\t" setw(10) << meal_cost;
+ cout << surcharge_calc << "\t\t" setw(10) << tax_and_tip_calc;
+ cout << total_cost_of_party << "\t\t" << setw(10) << deposit << "\t\t" << setw(10) << total_balance_due << endl;
+ }
+ */
+
+system("pause");
+return 0;
 }
+
