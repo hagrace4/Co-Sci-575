@@ -2,10 +2,10 @@
 #include <iomanip>
 #include <fstream>
 
-void meal_cost(kids, meal_cost);
+/*void cost_of_meal(kids, meal_cost);
 void additional_cost(tip_calc, tax_calc, surcharge_calc);
 //function 3 prototype
-void Calc_total_and_output();
+void Calc_total_and_output();*/
 
 using namespace std;
 
@@ -15,98 +15,176 @@ int main()
 	const float tax_and_tip = .18;
 	const float kids_saving = .6;
 	const float surcharge = .07;
-	const float standard_meal = 21.75;
-	const float deluxe_meal = 25.80;
-	
-	
+	const float S = 21.75;
+	const float D = 25.80;
+
+
 	//declare variables
 	char meal_type;
 	char weekend;
-	float meal_cost;
+	float meal_cost, deposit;
 	int adults;
 	int kids;
 	float tax_and_tip_Calc;
 	float surcharge_calc;
 	int ID;
-	
-	
-	//do error validation,
-	cout << "Enter party ID \n";
-	cin >> ID;
+	bool valid;
 
-	cout << "What is the number of adults? \n";
-	cin >> adults;
-	if (adults < 0)
+	cout << fixed << showpoint << setprecision(2);
+
+
+	do {
+		valid = true;
+		cout << "Enter party ID \n";
+		cin >> ID;
+		if (!cin)
+		{
+			cout << "The input must be a number." << endl;
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+		else if (ID < 0)
+		{
+			cout << "Error! The input must be a positive number. \n";
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+		} while (valid == false);
+
+		
+		do {
+			valid = true;
+			cout << "What is the number of adults? \n";
+			cin >> adults;
+			if (!cin)
+			{
+				cout << "The input must be a number." << endl;
+				cin.clear();
+				cin.ignore(200, '\n');
+				valid = false;
+			}
+			else if (adults < 0)
+			{
+				cout << "Error! The input must be a positive number. \n";
+				cin.clear();
+				cin.ignore(200, '\n');
+				valid = false;
+			}
+		} while (valid == false);
+		
+		do {
+			valid = true;
+
+			cout << "What is the number of children? \n";
+			cin >> kids;
+			if (!cin)
+			{
+				cout << "The input must be a number." << endl;
+				cin.clear();
+				cin.ignore(200, '\n');
+				valid = false;
+			}
+			else if (kids < 0)
+			{
+				cout << "Error! The input must be a positive number. \n";
+				cin.clear();
+				cin.ignore(200, '\n');
+				valid = false;
+			}
+		} while (valid == false);
+		
+		do {
+			valid = true;
+			cout << "What is the meal type? \n";
+			cout << "Input must be <S> or <D>. \n";
+			cin >> meal_type;
+			while (meal_type != 'S' && meal_type != 's'  && meal_type != 'D' && meal_type != 'd')
+			{
+				cout << "Error! The meal type must be S or D. \n";
+				cin >> meal_type;
+			}
+		} while (valid == false);
+		do {
+			valid = true;
+			cout << "Is the catering done on the weekend (Friday, Saturday, or Sunday)? \n";
+			cout << "<Y> for yes. <N> for no. \n";
+			cin >> weekend;
+			while (weekend != 'Y' && weekend != 'y' && weekend != 'N' && weekend != 'n')
+			{
+				cout << "Error! The input must be <Y> for yes or <N> for no. \n";
+				cin >> weekend;
+			}
+		} while (valid == false);
+
+		do {
+			valid = true;
+			cout << "What is the deposit for the meal? \n";
+			cin >> deposit;
+			if (!cin)
+			{
+				cout << "The input must be a number." << endl;
+				cin.clear();
+				cin.ignore(200, '\n');
+				valid = false;
+			}
+			while (deposit < 0)
+			{
+				cout << "Error! The deposit can't be negative \n";
+				cin >> deposit;
+			}
+		} while (valid == false);
+		/*
+		ifstream infile;
+		ofstream outfile;
+		int ID, adults, kids;
+		char meal_type;
+		float total_meal_cost, tax, tip, surcharge, total_party_cost;
+
+		infile.open("c:\\temp\\myfile.dat");
+		if (!infile)						//there was an error on open, file not found
+		{
+			cout << "Cannot open file, terminating program" << endl;
+			exit(1);
+		}
+		cout << "Open the output file. \n";
+		outfile.open("c:\\temp\\newfile.dat);
+			infile >> name; 					//this is called a priming read, only used once
+		while (infile)						//or while (!infile.eof())
+		{
+			outfile << name << endl;;
+			infile >> name;
+		}
+		infile.close();
+		outfile.close();
+		return 0;
+
+
+	}
+	//Function 2
+	void cost_of_meal(kids, meal_cost)
 	{
-		cout << "Error \n";
-		cin >> adults;
+		kids = (meal_type * kids_savings)
+			meal_cost = (meal_type * adults) + (meal_type * kids)
 	}
-	cout << "What is the number of children? \n";
-	cin >> kids;
-	if (kids< 0)
+
+	//Function 3
+	void additional_cost(tip_calc, tax_calc, surcharge_calc)
 	{
-		cout << "Error \n";
-		cin >> kids;
+		tax_and_tip_Calc = tax_ * meal_cost;
+		subcharge_calc = subcharge * meal_cost;
 	}
 
-	cout << "What is the meal type? \n";
-	cin >> meal_type;
-	if (meal_type != S || meal_type != D)
+	//Function 4
+	void Calc_total_and_output()
 	{
-		cout << "Error \n";
-		cin >> meal_type;
+		Total_balance_due = meal_cost * tax_and_tip;
+		cout << ID "\t\t" setw(10) << adults "\t\t" setw(10) << kids "\t\t" setw(10) << meal_cost;
+		cout << surcharge_calc "\t\t" setw(10) << tax_calc "\t\t" setw(10) << tip_calc "\t\t" setw(10);
+		cout << total_cost_of_party "\t\t" setw(10) << deposit "\t\t" setw(10) << total_balance_due << endl;
 	}
-
-	cout << "Is the catering done over the weekend? \n";
-	cin >> weekend;
-	
-ifstream infile; 
-ofstream outfile; 
-int ID, adults, kids;
-char meal_type;
-float total_meal_cost, tax, tip, surcharge, total_party_cost;
-
-infile.open ("c:\\temp\\myfile.dat");
-if (!infile)						//there was an error on open, file not found
-{	cout << "Cannot open file, terminating program"<< endl;
-exit (1);
-}
-	cout << "Open the output file. \n";
-	outfile.open ("c:\\temp\\newfile.dat);
-	infile >> name; 					//this is called a priming read, only used once
-	while (infile)						//or while (!infile.eof())
-	{	outfile <<name<< endl;;
-		infile>> name;
+	*/
+		return 0;
+		system("pause");
 	}
-	infile.close();
-	outfile.close ();
-	return 0;
-
-
-}
-//Function 2
-void meal_cost(kids, meal_cost)
-{
-		kids= (meal_type * kids_savings)
-		meal_cost= (meal_type * adults) + (meal_type * kids)
-}
-
-//Function 3
-void additional_cost(tip_calc, tax_calc, surcharge_calc)
-{
-	tax_and_tip_Calc = tax_ * meal_cost;
-	subcharge_calc = subcharge * meal_cost;
-}
-
-//Function 4
-void Calc_total_and_output()
-{
-	Total_balance_due = meal_cost *tax_and_tip;
-	cout << ID "\t\t" setw(10) << adults "\t\t" setw(10) << kids "\t\t" setw(10) << meal_cost;
-	cout << surcharge_calc "\t\t" setw(10) << tax_calc "\t\t" setw(10) << tip_calc "\t\t" setw(10);
-	cout << total_cost_of_party "\t\t" setw(10) << deposit "\t\t" setw(10) << total_balance_due << endl;
-}
-
-return 0;
-system ("pause");
-}
