@@ -1,11 +1,12 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-
-/*void cost_of_meal(kids, meal_cost);
-void additional_cost(tip_calc, tax_calc, surcharge_calc);
-//function 3 prototype
-void Calc_total_and_output();*/
+/*
+//Function 1
+/void cost_of_meal(kids, meal_cost);
+void additional_cost(tip_and_tax_calc, surcharge_calc);
+void Calc_total_and_output();
+*/
 
 using namespace std;
 
@@ -28,10 +29,7 @@ int main()
 	ofstream outfile;
 
 	cout << fixed << showpoint << setprecision(2);
-	cout << "Listen here you fucking drug addict scumbag weasel, we're tired of your shit. You went from a unique livestreamer who provided good content, \n";
-	cout << "to a guy who streams himself running errands.Your rationale behind this is that you need to do what makes you happy and not what makes the community \n";
-	cout << "happy.Get real, fucknut.You stream an average of 2 hours a day, buddy.You can do the things that make you happy on your own time.You may have surrounded yourself \n";
-	cout << "with a bunch of ego - massaging yes - men in LA, but we don't play that bullshit here. Fix your shit, or quit. \n";
+	
 	do {
 		valid = true;
 		cout << "Enter party ID \n";
@@ -136,7 +134,7 @@ int main()
 	} while (valid == false);
 
 	// My code works fine till here, then I have all these errors about the functions even though they are comments (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-/*
+
 	infile.open("D:\\Input File");
 	if (!infile)						//there was an error on open, file not found
 	{
@@ -146,13 +144,17 @@ int main()
 	cout << "Open the output file. \n";
 	outfile.open("D:\\Output File");
 	infile >> num;
-
+	
 	while (!infile.eof())
 	{
 		outfile << " " << num << " ";
 		infile >> num;
 	}
-
+	total_cost_of_party = 0;
+	meal_cost = 0;
+	surcharge_calc = 0;
+	tax_and_tip_Calc = 0;
+	total_balance_due = 0;
 	outfile << "\t ID: " << ID << "\t\t";
 	outfile << "\t Adults: " << adults << "\t\t";
 	outfile << "\t Children: " << kids << "\t\t";
@@ -166,7 +168,7 @@ int main()
 	infile.close();
 	outfile.close();
 
-}/*
+/*
  //Function 1
 
  //Function 2
@@ -177,7 +179,7 @@ int main()
  }
 
  //Function 3
- void additional_cost(tip_calc, tax_calc, surcharge_calc)
+	void additional_cost(tip_calc, tax_calc, surcharge_calc)
  {
  tax_and_tip_Calc = tax_ * meal_cost;
  subcharge_calc = subcharge * meal_cost;
@@ -192,7 +194,6 @@ int main()
  cout << total_cost_of_party << "\t\t" << setw(10) << deposit << "\t\t" << setw(10) << total_balance_due << endl;
  }
  */
-
 system("pause");
 return 0;
 }
