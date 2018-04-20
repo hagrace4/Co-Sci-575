@@ -21,8 +21,8 @@ int main()
 
 	//declare variables
 	char meal_type, weekend;
-	float meal_cost, deposit, tax_and_tip_Calc, surcharge_calc, total_meal_cost, total_party_cost;
-	int ID, adults, kids;
+	float meal_cost, deposit, tax_and_tip_Calc, surcharge_calc, total_meal_cost, total_cost_of_party, total_balance_due;
+	int ID, adults, kids, num;
 	bool valid;
 	ifstream infile;
 	ofstream outfile;
@@ -47,134 +47,143 @@ int main()
 			cin.ignore(200, '\n');
 			valid = false;
 		}
-		} while (valid == false);
+	} while (valid == false);
 
-		
-		do {
-			valid = true;
-			cout << "What is the number of adults? \n";
-			cin >> adults;
-			if (!cin)
-			{
-				cout << "The input must be a number." << endl;
-				cin.clear();
-				cin.ignore(200, '\n');
-				valid = false;
-			}
-			else if (adults < 0)
-			{
-				cout << "Error! The input must be a positive number. \n";
-				cin.clear();
-				cin.ignore(200, '\n');
-				valid = false;
-			}
-		} while (valid == false);
-		
-		do {
-			valid = true;
 
-			cout << "What is the number of children? \n";
-			cin >> kids;
-			if (!cin)
-			{
-				cout << "The input must be a number." << endl;
-				cin.clear();
-				cin.ignore(200, '\n');
-				valid = false;
-			}
-			else if (kids < 0)
-			{
-				cout << "Error! The input must be a positive number. \n";
-				cin.clear();
-				cin.ignore(200, '\n');
-				valid = false;
-			}
-		} while (valid == false);
-		
-		do {
-			valid = true;
-			cout << "What is the meal type? \n";
-			cout << "Input must be <S> or <D>. \n";
+	do {
+		valid = true;
+		cout << "What is the number of adults? \n";
+		cin >> adults;
+		if (!cin)
+		{
+			cout << "The input must be a number." << endl;
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+		else if (adults < 0)
+		{
+			cout << "Error! The input must be a positive number. \n";
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+	} while (valid == false);
+
+	do {
+		valid = true;
+
+		cout << "What is the number of children? \n";
+		cin >> kids;
+		if (!cin)
+		{
+			cout << "The input must be a number." << endl;
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+		else if (kids < 0)
+		{
+			cout << "Error! The input must be a positive number. \n";
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+	} while (valid == false);
+
+	do {
+		valid = true;
+		cout << "What is the meal type? \n";
+		cout << "Input must be <S> or <D>. \n";
+		cin >> meal_type;
+		while (meal_type != 'S' && meal_type != 's'  && meal_type != 'D' && meal_type != 'd')
+		{
+			cout << "Error! The meal type must be S or D. \n";
 			cin >> meal_type;
-			while (meal_type != 'S' && meal_type != 's'  && meal_type != 'D' && meal_type != 'd')
-			{
-				cout << "Error! The meal type must be S or D. \n";
-				cin >> meal_type;
-			}
-		} while (valid == false);
-		do {
-			valid = true;
-			cout << "Is the catering done on the weekend (Friday, Saturday, or Sunday)? \n";
-			cout << "<Y> for yes. <N> for no. \n";
+		}
+	} while (valid == false);
+	do {
+		valid = true;
+		cout << "Is the catering done on the weekend (Friday, Saturday, or Sunday)? \n";
+		cout << "<Y> for yes. <N> for no. \n";
+		cin >> weekend;
+		while (weekend != 'Y' && weekend != 'y' && weekend != 'N' && weekend != 'n')
+		{
+			cout << "Error! The input must be <Y> for yes or <N> for no. \n";
 			cin >> weekend;
-			while (weekend != 'Y' && weekend != 'y' && weekend != 'N' && weekend != 'n')
-			{
-				cout << "Error! The input must be <Y> for yes or <N> for no. \n";
-				cin >> weekend;
-			}
-		} while (valid == false);
+		}
+	} while (valid == false);
 
-		do {
-			valid = true;
-			cout << "What is the deposit for the meal? \n";
+	do {
+		valid = true;
+		cout << "What is the deposit for the meal? \n";
+		cin >> deposit;
+		if (!cin)
+		{
+			cout << "The input must be a number." << endl;
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+		while (deposit < 0)
+		{
+			cout << "Error! The deposit can't be negative \n";
 			cin >> deposit;
-			if (!cin)
-			{
-				cout << "The input must be a number." << endl;
-				cin.clear();
-				cin.ignore(200, '\n');
-				valid = false;
-			}
-			while (deposit < 0)
-			{
-				cout << "Error! The deposit can't be negative \n";
-				cin >> deposit;
-			}
-		} while (valid == false);
-		/*
-			infile.open("c:\\temp\\myfile.dat");
-		if (!infile)						//there was an error on open, file not found
-		{
-			cout << "Cannot open file, terminating program" << endl;
-			exit(1);
 		}
-		cout << "Open the output file. \n";
-		outfile.open("c:\\temp\\newfile.dat);
-			infile >> name; 					//this is called a priming read, only used once
-		while (infile)						//or while (!infile.eof())
-		{
-			outfile << name << endl;;
-			infile >> name;
-		}
-		infile.close();
-		outfile.close();
-		return 0;
+	} while (valid == false);
+	
+	infile.open("D:\\Input File");
+	if (!infile)						//there was an error on open, file not found
+	{
+	cout << "Cannot open file, terminating program" << endl;
+	exit(1);
+	}
+	cout << "Open the output file. \n";
+	outfile.open("D:\\Output File");
+	infile >> num;
 
+	while (!infile.eof())						
+	{
+	outfile << " " << num << " ";
+	infile >> num;
+	}
 
+	outfile << "\t ID: " << ID << "\t\t";
+	outfile << "\t Adults: " << adults << "\t\t";
+	outfile << "\t Children: " << kids << "\t\t";
+	outfile << "\t Meal Cost: " << meal_cost << "\t\t";
+	outfile << "\t Surcharge: " << surcharge_calc << "\t\t";
+	outfile << "\t Tax and Tip: " << tax_and_tip_Calc << "\t\t";
+	outfile << "\t Total Cost of Party: " << total_cost_of_party << "\t\t";
+	outfile << "\t Deposit: " << deposit << "\t\t";
+	outfile << "\t Total Balance Due: " << total_balance_due << "\t\t";
+
+	infile.close();
+	outfile.close();
+	
 	}
 	//Function 2
 	void cost_of_meal(kids, meal_cost)
 	{
-		kids = (meal_type * kids_savings)
-			meal_cost = (meal_type * adults) + (meal_type * kids)
+	kids = (meal_type * kids_savings)
+	meal_cost = (meal_type * adults) + (meal_type * kids)
 	}
 
 	//Function 3
 	void additional_cost(tip_calc, tax_calc, surcharge_calc)
 	{
-		tax_and_tip_Calc = tax_ * meal_cost;
-		subcharge_calc = subcharge * meal_cost;
+	tax_and_tip_Calc = tax_ * meal_cost;
+	subcharge_calc = subcharge * meal_cost;
 	}
 
 	//Function 4
 	void Calc_total_and_output()
 	{
-		Total_balance_due = meal_cost * tax_and_tip;
-		cout << ID "\t\t" setw(10) << adults "\t\t" setw(10) << kids "\t\t" setw(10) << meal_cost;
-		cout << surcharge_calc "\t\t" setw(10) << tax_calc "\t\t" setw(10) << tip_calc "\t\t" setw(10);
-		cout << total_cost_of_party "\t\t" setw(10) << deposit "\t\t" setw(10) << total_balance_due << endl;
+	Total_balance_due = meal_cost * tax_and_tip;
+	cout << ID << "\t\t" setw(10) << adults "\t\t" setw(10) << kids "\t\t" setw(10) << meal_cost;
+	cout << surcharge_calc << "\t\t" setw(10) << tax_and_tip_calc;
+	cout << total_cost_of_party << "\t\t" << setw(10) << deposit << "\t\t" << setw(10) << total_balance_due << endl;
 	}
-	*/
-		return 0;
-		system("pause");
-	}
+	return 0;
+	system("pause");
+}
