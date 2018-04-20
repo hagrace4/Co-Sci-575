@@ -20,18 +20,14 @@ int main()
 
 
 	//declare variables
-	char meal_type;
-	char weekend;
-	float meal_cost, deposit;
-	int adults;
-	int kids;
-	float tax_and_tip_Calc;
-	float surcharge_calc;
-	int ID;
+	char meal_type, weekend;
+	float meal_cost, deposit, tax_and_tip_Calc, surcharge_calc, total_meal_cost, total_party_cost;
+	int ID, adults, kids;
 	bool valid;
+	ifstream infile;
+	ofstream outfile;
 
 	cout << fixed << showpoint << setprecision(2);
-
 
 	do {
 		valid = true;
@@ -136,13 +132,7 @@ int main()
 			}
 		} while (valid == false);
 		/*
-		ifstream infile;
-		ofstream outfile;
-		int ID, adults, kids;
-		char meal_type;
-		float total_meal_cost, tax, tip, surcharge, total_party_cost;
-
-		infile.open("c:\\temp\\myfile.dat");
+			infile.open("c:\\temp\\myfile.dat");
 		if (!infile)						//there was an error on open, file not found
 		{
 			cout << "Cannot open file, terminating program" << endl;
