@@ -135,14 +135,14 @@ int main()
 
 	// My code works fine till here, then I have all these errors about the functions even though they are comments (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
 
-	infile.open("D:\\Input File");
+	infile.open("D:\\Input File.txt");
 	if (!infile)						//there was an error on open, file not found
 	{
 		cout << "Cannot open file, terminating program" << endl;
 		exit(1);
 	}
 	cout << "Open the output file. \n";
-	outfile.open("D:\\Output File");
+	outfile.open("D:\\Output File.txt");
 	infile >> num;
 	
 	while (!infile.eof())
