@@ -1,0 +1,32 @@
+ 346  130  982  90  656  117 595
+	 The Highest number: 982			 The Lowest number: 90
+	 The Total: 2916				 The Average: 416.571
+
+ 415  948  126  4  558  571 87
+	 The Highest number: 948			 The Lowest number: 4
+	 The Total: 2709				 The Average: 387
+
+ 42  360  412  721  463  47 119
+	 The Highest number: 721			 The Lowest number: 42
+	 The Total: 2164				 The Average: 309.143
+
+ 441  190  985  214  509  2 571
+	 The Highest number: 985			 The Lowest number: 2
+	 The Total: 2912				 The Average: 416
+
+ 77  81  681  651  995  93 74
+	 The Highest number: 995			 The Lowest number: 74
+	 The Total: 2652				 The Average: 378.857
+
+ 310  9  995  561  92  14 288
+	 The Highest number: 995			 The Lowest number: 9
+	 The Total: 2269				 The Average: 324.143
+
+ 466  664  892  8  766  34 639
+	 The Highest number: 892			 The Lowest number: 8
+	 The Total: 3469				 The Average: 495.571
+
+ 151  64  98  813  67  834 369
+	 The Highest number: 834			 The Lowest number: 64
+	 The Total: 2396				 The Average: 342.286
+
