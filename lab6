@@ -7,10 +7,10 @@
 #include <fstream>
 
 //Prototypes
-//Function 1
-void cost_of_meal(int &kids, int &meal_cost);
-void additional_cost(float &tax_and_tip_calc, float &surcharge_calc);
-void Calc_total_and_output(float &Total_balance_due);
+int GetData(int &ID, int &adults, int &kids, char &meal_type, char &weekend, float &deposit);
+void cost_of_meal();
+void additional_cost();
+void Calc_total_and_output();
 
 using namespace std;
 
@@ -34,6 +34,14 @@ int main()
 
 	cout << fixed << showpoint << setprecision(2);
 
+	
+	system("pause");
+	return 0;
+}
+
+ //Function 1
+int GetData(int &ID, int &adults, int &kids, char &meal_type, char &weekend, float &deposit)
+{
 	do {
 		valid = true;
 		cout << "Enter party ID \n";
@@ -170,27 +178,24 @@ int main()
 
 	infile.close();
 	outfile.close();
-	system("pause");
 }
 
- //Function 1
-
- //Function 2
-void cost_of_meal(int &kids, int &meal_cost)
+ //Function 2 void cost_of_meal(int &kids, int &meal_cost)
+void cost_of_meal()
 	{
 		kids = (meal_type * kids_saving);
 		meal_cost = (meal_type * adults) + (meal_type * kids);
 	}
 
- //Function 3
-	void additional_cost(float &tax_and_tip_calc, float &surcharge_calc)
+ //Function 3 void additional_cost(float &tax_and_tip_calc, float &surcharge_calc)
+	void additional_cost()
  {
  tax_and_tip_Calc = tax_and_tip * meal_cost;
  surcharge_calc = surcharge * meal_cost;
  }
 
-	//Function 4
-	void Calc_total_and_output(float &Total_balance_due)
+	//Function 4 void Calc_total_and_output(float &Total_balance_due)
+	void Calc_total_and_output()
  {
  Total_balance_due = meal_cost * tax_and_tip;
 
@@ -199,5 +204,4 @@ void cost_of_meal(int &kids, int &meal_cost)
  cout << total_cost_of_party << "\t\t" << setw(10) << deposit << "\t\t" << setw(10) << total_balance_due << endl;
  }
  
-
 
