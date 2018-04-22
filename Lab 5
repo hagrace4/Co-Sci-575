@@ -1,0 +1,108 @@
+//Feher, Jozsef
+//Assignment 4/12/18 Lab #5
+//15245, Thursday 1:15 PM
+
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+//Declare Constant Variables
+int const row = 8;
+int const col = 6;
+int const num_per_line = 7;
+
+int main()
+{
+	//Declare Variables
+	ifstream infile;
+	ofstream outfile;
+	int num, min, max, sum, a , b;
+	double average, total_numbers_per_line, partial_sum = 0;
+
+	infile.open("I:\\data.txt");
+	if (!infile)
+	{
+		cout << "Cannot open file, terminating program" << endl;
+		exit(1);
+	}
+	cout << "Open your output file." << endl;
+	outfile.open("I:\\file.txt");
+	infile >> num;
+
+
+	max = num;
+	min = num;
+
+	/*for (a = 0; a < row; a++)*/
+	while(!infile.eof())
+	{
+	
+		for (b = 0; b < col; b++)
+		{
+			outfile << " " << num << " ";
+			partial_sum += num;
+			infile >> num;
+			if (num > max)
+				max = num;
+			if (num < min)
+				min = num;
+		}
+		outfile << num << endl;
+		sum = partial_sum + num;
+
+		total_numbers_per_line = 7;
+
+		average = sum / total_numbers_per_line;
+		outfile << "\t The Highest number: " << max << "\t\t";
+		outfile << "\t The Lowest number: " << min << endl;
+		outfile << "\t The Total: " << sum << "\t\t\t";
+		outfile << "\t The Average: " << average << endl;
+		outfile << endl;
+
+		infile >> num;
+
+		partial_sum = 0;
+		max = num;
+		min = num;
+	}
+
+	infile.close();
+	outfile.close();
+	system("pause");
+	return 0;
+}
+
+/* 346  130  982  90  656  117 595
+	 The Highest number: 982			 The Lowest number: 90
+	 The Total: 2916				 The Average: 416.571
+
+ 415  948  126  4  558  571 87
+	 The Highest number: 948			 The Lowest number: 4
+	 The Total: 2709				 The Average: 387
+
+ 42  360  412  721  463  47 119
+	 The Highest number: 721			 The Lowest number: 42
+	 The Total: 2164				 The Average: 309.143
+
+ 441  190  985  214  509  2 571
+	 The Highest number: 985			 The Lowest number: 2
+	 The Total: 2912				 The Average: 416
+
+ 77  81  681  651  995  93 74
+	 The Highest number: 995			 The Lowest number: 74
+	 The Total: 2652				 The Average: 378.857
+
+ 310  9  995  561  92  14 288
+	 The Highest number: 995			 The Lowest number: 9
+	 The Total: 2269				 The Average: 324.143
+
+ 466  664  892  8  766  34 639
+	 The Highest number: 892			 The Lowest number: 8
+	 The Total: 3469				 The Average: 495.571
+
+ 151  64  98  813  67  834 369
+	 The Highest number: 834			 The Lowest number: 64
+	 The Total: 2396				 The Average: 342.286*/
