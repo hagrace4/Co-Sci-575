@@ -1,0 +1,203 @@
+//Feher, Jozsef
+//Assigenment 3/08/18 Lab #3
+//15245, Thursday 1:15 P.M.
+
+#include <iostream>
+#include <iomanip>
+
+
+using namespace std;
+const float A = 9.95;
+const float B = 14.95;
+const float C = 19.95;
+const float a = 9.95;
+const float b = 14.95;
+const float c = 19.95;
+const float add_hours_A = 2.00;
+const float add_hours_B = 1.00;
+
+int main()
+{ 
+	cout << fixed << showpoint << setprecision(2);
+
+  //Declare variables
+	float Num_of_hours;
+	char  Package;
+	float hourly_charge_A = 0;
+	float hourly_charge_B = 0;
+	float hourly_charge_C = 0;
+	
+  //Statements
+  //Program to calculate a customer’s monthly bill.  
+  //It should ask which package was purchased and how many hours were used.
+	cout << "Which package was purchased?";
+
+	cin >> Package;
+	while (Package != 'A' && Package != 'a' && Package != 'B' && Package != 'b' && Package != 'C' && Package != 'c')
+	{
+		cout << "Error! You must choose between the available Packages of A, B or C." << endl;
+		cout << "Which package was purchased?";
+		cin >> Package;
+	}
+	cout << "How many hours were used? ";
+	cin >> Num_of_hours;
+	 while (Num_of_hours < 0 || Num_of_hours > 200)
+	{cout << "Error! Hours can not be negative or be more than 200. Please enter a valid number of hours." <<endl;
+	cout << "How many hours were used? ";
+	cin >> Num_of_hours;}
+	 // I have to put the two variables after the statement because the code can't find the hourly charge without how many hours were used.
+	 float hourly_charge_a = (Num_of_hours - 10) * add_hours_A;
+	 float hourly_charge_b = (Num_of_hours - 20) * add_hours_B;
+
+	//Algorithm to find the cost of the bill as well as showing the output for the Bill
+	if (Package == 'A' || Package == 'a')
+		if (Num_of_hours <= 10)
+		{
+			cout << "Package " << Package << ", usage " << Num_of_hours << " hours \t\t" << setw(32) << "Bill $" << A << endl;
+			cout << "Base Charge " << A << " Hourly Charges " << hourly_charge_A << endl;
+		}
+		else
+		{
+			cout << "Package " << Package << ", usage " << Num_of_hours << " hours \t\t" << setw(32) << "Bill $" << A + (Num_of_hours - 10) * add_hours_A << endl;
+			cout << "Base Charge " << A << " Hourly Charges " << hourly_charge_a << endl;
+		}
+
+			
+	if (Package == 'B' || Package == 'b')
+		if (Num_of_hours <= 20)
+		{
+			cout << "Package " << Package << ", usage " << Num_of_hours << " hours \t\t" << setw(32) << "Bill $" << B << endl;
+			cout << "Base Charge " << B << " Hourly Charges " << hourly_charge_B << endl;
+		}
+		else 
+		{
+			cout << "Package " << Package << ", usage " << Num_of_hours << " hours \t\t" << setw(32) << "Bill $" << B + (Num_of_hours - 20) * add_hours_B<< endl;
+			cout << "Base Charge " << B << " Hourly Charges " << hourly_charge_b << endl;
+		}
+
+	if (Package == 'C' || Package == 'c')
+	{
+		cout << "Package " << Package << ", usage " << Num_of_hours << " hours \t\t" << setw(32) << "Bill $" << C << endl;
+		cout << "Base Charge " << C << " Hourly Charges " << hourly_charge_C << endl;
+	}
+
+	//Now the code is trying to figure out how much the customer would save by switching or if they should not switch
+
+	// These are my algorithms for finding the savings, it may seem odd but there are some cases where I do and don't calculate the additional hours.
+	float A_to_B = (A + (Num_of_hours - 10) * add_hours_A) - B;
+	float A_to_b = (A + (Num_of_hours - 10) * add_hours_A) - (B + (Num_of_hours - 20) * add_hours_B);
+	float A_to_C = (A + (Num_of_hours - 10) * add_hours_A) - C;
+	float B_to_C = (B + (Num_of_hours - 20) * add_hours_B) - C;
+	float B_to_A = B-A;
+	float B_to_a = B - (A + (Num_of_hours - 10) * add_hours_A);
+	float C_to_A = C - A;
+	float C_to_a = C - (A + (Num_of_hours - 10) * add_hours_A);
+	float C_to_B = C - B;
+	float C_to_b = C - (B + (Num_of_hours - 20) * add_hours_B);
+
+
+	if (Package == 'A' || Package == 'a')
+		if (Num_of_hours <= 12.5)
+		{
+			cout << "It is reccommended to stay with Package A" << endl;
+		}
+		else if (Num_of_hours > 12.5 && Num_of_hours <= 15)
+		{
+		cout << "You would save " << A_to_B << " by switching to B" << endl;
+		cout << "It is recommended to switch to Package B to save money." << endl;
+		}
+		else if (Num_of_hours > 15 && Num_of_hours <= 20)
+		{
+		cout << "You would save $" << A_to_B << " by switching to B" << endl;
+		cout << "You would save $" << A_to_C << " by switching to C" << endl;
+		cout << "It is recommended to switch to Package B to save money." << endl;
+		}
+		else if (Num_of_hours > 20 && Num_of_hours <= 25)
+		{
+			cout << "You would save $" << A_to_b << " by switching to B" << endl;
+			cout << "You would save $" << A_to_C << " by switching to C" << endl;
+			cout << "It is recommended to switch to Package B to save money." << endl;
+		}
+		else 
+		{
+		cout << "You would save $" << A_to_b << " by switching to B" << endl;
+		cout << "You would save $" << A_to_C << " by switching to C" << endl;
+		cout << "It is recommended to switch to Package C to save money." << endl;
+		}
+
+	if (Package == 'B' || Package == 'b')
+		if (Num_of_hours <= 10)
+		{
+			cout << "You would save $" << B_to_A << "by switching to A" << endl;
+			cout << "It is recommended to switch to Package A to save money." << endl;
+		}
+
+		else if (Num_of_hours >10 && Num_of_hours <15)
+		{
+			cout << "You would save $" << B_to_a << " by switching to A" << endl;
+			cout << "It is recommended to switch to Package A to save money." << endl;
+		}
+		else if (Num_of_hours >= 15 && Num_of_hours <= 25)
+		{
+			cout << "It is reccommended to stay with Package B" << endl;
+		}
+		else
+		{
+			cout << "You would save $" << B_to_C << " by switching to C" << endl;
+			cout << "It is recommended to switch to Package C to save money." << endl;
+		}
+	if (Package == 'C' || Package == 'c')
+		if (Num_of_hours < 10)
+		{
+			cout << "You would save $ " << C_to_A << " by switching to A" << endl;
+			cout << "It is recommended to switch to Package B to save money." << endl;
+		}
+
+		else if (Num_of_hours < 12.5)
+		{
+			cout << "You would save  $" << C_to_a << " by switching to A" << endl;
+			cout << "It is recommended to switch to Package A to save money." << endl;
+		}
+
+		else if (Num_of_hours < 15)
+		{
+			cout << "You would save $ " << C_to_a << " by switching to A" << endl;
+			cout << "You would save $ " << C_to_B << " by switching to B" << endl;
+			cout << "It is recommended to switch to Package B to save money." << endl;
+		}
+
+
+		else if (Num_of_hours < 20)
+		{
+			cout << "You would save $ " << C_to_B << " by switching to B" << endl;
+			cout << "It is recommended to switch to Package B to save money." << endl;
+		}
+
+		else if (Num_of_hours < 25)
+		{
+			cout << "You would save $ " << C_to_b << " by switching to B" << endl;
+			cout << "It is recommended to switch to Package B to save money." << endl;
+		}
+
+		else cout << "It is reccommended to stay with Package C." << endl;
+
+	system("pause");
+	return 0;
+	
+}
+
+/*Which package was purchased?b
+How many hours were used? 25
+Package b, usage 25.00 hours                                      Bill $19.95
+Base Charge 14.95 Hourly Charges 5.00
+It is reccommended to stay with Package B
+Press any key to continue . . .*/
+
+/*Which package was purchased?a
+How many hours were used? 30
+Package a, usage 30.00 hours                                      Bill $49.95
+Base Charge 9.95 Hourly Charges 40.00
+You would save $25.00 by switching to B
+You would save $30.00 by switching to C
+It is recommended to switch to Package C to save money.
+Press any key to continue . . .*/
