@@ -1,0 +1,183 @@
+//Feher, Jozsef
+//15425, 3-27-18, 11:30
+//Lab #4 and 3-27-18
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <cmath>
+using namespace std;
+
+//Declare Constant Variables
+const float absorbed = .13;
+
+int main()
+{
+	//Declare Variables
+	string drink;
+	int hours, i;
+	float caffeine, rem_caf;
+	char choice; 
+	bool valid;
+
+	cout << fixed << showpoint << setprecision(2);
+	
+	do {
+	cout << "What beverage was consumed? \n";
+	getline(cin, drink);
+	cout << endl;
+	//ask for caffeine intake 
+	
+	do {
+	valid = true;
+	cout << "How much caffeine was consumed? The level of caffeine must be positive and cannot excede 350 mg.\n";
+	cin >> caffeine;
+		if (!cin) {
+			cout << "The input must be a number." << endl;
+			cin.clear();
+			cin.ignore(200,'\n');
+			valid = false;
+		}
+		else if (caffeine > 350 || caffeine < 0) {
+			cout << "Error! The level of caffeine must be positive and cannot excede 350 mg.\n";
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+		cout << endl;
+	} while (valid == false);
+
+	
+	do {
+		valid = true;
+		cout << "How many hours do you want to see the output of caffeine remainding for?" << endl;
+		cout << "The number of hours must be positive and not greater than 14." << endl;
+		cin >> hours;
+		if (!cin) {
+			cout << "The input must be a number from 0 to 14." << endl;
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+		else if ( hours > 14 || hours < 0)	{
+			cout << "Error! The number of hours must be positive and not greater than 14.\n";
+			cin.clear();
+			cin.ignore(200, '\n');
+			valid = false;
+		}
+		cout << endl;
+	} while (valid == false);
+
+
+	//The last part of output shows for 0 hours, meaning no caffeine has been absorbed
+	if (hours == 0) {
+		cout << "The remaining caffeine is " << caffeine << endl;
+		cout << endl;
+	}
+	else { 
+		rem_caf = caffeine;
+		for (i = 1; i <= hours; i++) {
+			rem_caf = rem_caf - rem_caf * absorbed;
+			cout << "Hours " << i << " mg's of Remainding caffeine " << rem_caf << endl;
+		}
+		
+	}
+	cout << drink << "\t\t" << setw(4) << caffeine << " mg of caffeine \t\t" << setw(4) << "Show " << hours << " hours, " << rem_caf << " mg's of caffeine remaining." << endl;
+	cout << endl;
+
+		cout << "Calculate more test data? <Y> <N>" << endl;
+		cin >> choice;
+		cin.ignore();
+		cout << endl;
+		while (choice != 'Y' && choice != 'y' && choice != 'N' && choice != 'n') {
+			cout << "Error! Enter a valid input. \n";
+			cout << "Enter Y for yes or N for No." << endl;
+			cout << endl;
+			cin >> choice;
+			cin.ignore();
+		}
+	} while (choice == 'Y' || choice == 'y');
+
+	system("pause");
+	return 0;
+}
+
+/*What beverage was consumed?
+16 oz starbucks coffee
+
+How much caffeine was consumed? The level of caffeine must be positive and cannot excede 350 mg.
+a
+The input must be a number.
+
+How much caffeine was consumed? The level of caffeine must be positive and cannot excede 350 mg.
+-5
+Error! The level of caffeine must be positive and cannot excede 350 mg.
+
+How much caffeine was consumed? The level of caffeine must be positive and cannot excede 350 mg.
+310
+
+How many hours do you want to see the output of caffeine remainding for?
+The number of hours must be positive and not greater than 14.
+a
+The input must be a number from 0 to 14.
+
+How many hours do you want to see the output of caffeine remainding for?
+The number of hours must be positive and not greater than 14.
+-5
+Error! The number of hours must be positive and not greater than 14.
+
+How many hours do you want to see the output of caffeine remainding for?
+The number of hours must be positive and not greater than 14.
+10
+
+Hours 1 mg's of Remainding caffeine 269.70
+Hours 2 mg's of Remainding caffeine 234.64
+Hours 3 mg's of Remainding caffeine 204.14
+Hours 4 mg's of Remainding caffeine 177.60
+Hours 5 mg's of Remainding caffeine 154.51
+Hours 6 mg's of Remainding caffeine 134.42
+Hours 7 mg's of Remainding caffeine 116.95
+Hours 8 mg's of Remainding caffeine 101.75
+Hours 9 mg's of Remainding caffeine 88.52
+Hours 10 mg's of Remainding caffeine 77.01
+16 oz starbucks coffee          310.00 mg of caffeine           Show 10 hours, 77.01 mg's of caffeine remaining.
+
+Calculate more test data? <Y> <N>
+y
+
+What beverage was consumed?
+black tea
+
+How much caffeine was consumed? The level of caffeine must be positive and cannot excede 350 mg.
+a
+The input must be a number.
+
+How much caffeine was consumed? The level of caffeine must be positive and cannot excede 350 mg.
+-5
+Error! The level of caffeine must be positive and cannot excede 350 mg.
+
+How much caffeine was consumed? The level of caffeine must be positive and cannot excede 350 mg.
+47
+
+How many hours do you want to see the output of caffeine remainding for?
+The number of hours must be positive and not greater than 14.
+a
+The input must be a number from 0 to 14.
+
+How many hours do you want to see the output of caffeine remainding for?
+The number of hours must be positive and not greater than 14.
+-5
+Error! The number of hours must be positive and not greater than 14.
+
+How many hours do you want to see the output of caffeine remainding for?
+The number of hours must be positive and not greater than 14.
+5
+
+Hours 1 mg's of Remainding caffeine 40.89
+Hours 2 mg's of Remainding caffeine 35.57
+Hours 3 mg's of Remainding caffeine 30.95
+Hours 4 mg's of Remainding caffeine 26.93
+Hours 5 mg's of Remainding caffeine 23.43
+black tea               47.00 mg of caffeine            Show 5 hours, 23.43 mg's of caffeine remaining.
+
+Calculate more test data? <Y> <N>*/
