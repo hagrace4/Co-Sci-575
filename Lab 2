@@ -1,0 +1,79 @@
+//Feher, Jozsef
+//Assigenment 2/22/18 Lab #2
+//15245, Thursday 1:15 P.M.
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main()
+{	//Named constants 
+	const int Cost_Per_Hour = 35;
+	const double tax = .09;
+
+	//Declare variables
+	string Customers_name;
+	float Hours_of_labor, Cost_for_labor, Parts_and_supplies_cost;
+	float Total_amount;
+	float Total_cost;
+	float tax_amount;
+	
+	cout << fixed << showpoint << setprecision(2);
+
+	//Statements
+	// Prompt the customer to enter his or her first name.
+	cout << "What is the customer's first name? ";
+	cin >> Customers_name;
+
+	// Ask the customer to enter the total hours of labor
+	cout << "How many hours was the labor? ";
+	cin >> Hours_of_labor;
+	Cost_for_labor = Hours_of_labor * Cost_Per_Hour;
+
+	// Ask the customer to enter how much the parts and supplies costed.
+	cout << "How much were the parts and supplies? ";
+	cin >> Parts_and_supplies_cost;
+	Total_amount = Cost_for_labor + Parts_and_supplies_cost;
+	tax_amount = Parts_and_supplies_cost * tax;
+	Total_cost = tax_amount + Total_amount;
+
+	// This will then show the total amount due including tax
+	cout << "Customer name      \t\t" <<setw(8) << Customers_name << endl;
+	cout << "Hours of labor     \t\t" <<setw(8) << Hours_of_labor << endl;
+	cout << "Cost for labor     \t\t" <<setw(8) << Cost_for_labor << endl;
+	cout << "Parts and supplies \t\t" <<setw(8) << Parts_and_supplies_cost << endl;
+	cout << "Tax                \t\t" <<setw(8) << tax_amount << endl;
+	cout << "Total Amount Due   \t\t" <<setw(8) << Total_cost <<endl;
+	system("pause");
+
+	
+
+	return 0;
+}
+
+/*What is the customer's first name? Jones
+How many hours was the labor? 4.5
+How much were the parts and supplies? 97
+Customer name                      Jones
+Hours of labor                      4.50
+Cost for labor                    157.50
+Parts and supplies                 97.00
+Tax                                 8.73
+Total Amount Due                  263.23
+Press any key to continue . . .
+*/
+
+/*What is the customer's first name? Smith
+How many hours was the labor? 2.25
+How much were the parts and supplies? 200
+Customer name                      Smith
+Hours of labor                      2.25
+Cost for labor                     78.75
+Parts and supplies                200.00
+Tax                                18.00
+Total Amount Due                  296.75
+Press any key to continue . . .
+*/
+
+
