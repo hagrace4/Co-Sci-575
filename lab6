@@ -1,35 +1,35 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-/*
+
 //Function 1
-/void cost_of_meal(kids, meal_cost);
-void additional_cost(tip_and_tax_calc, surcharge_calc);
-void Calc_total_and_output();
-*/
+void cost_of_meal(int kids, int meal_cost);
+void additional_cost(float tax_and_tip_calc, float surcharge_calc);
+void Calc_total_and_output(float Total_balance_due);
+
+
+//const variables
+const float tax_and_tip = .18;
+const float kids_saving = .6;
+const float surcharge = .07;
+const float S = 21.75;
+const float D = 25.80;
+
+
+//declare variables
+char meal_type, weekend;
+float meal_cost, deposit, tax_and_tip_Calc, surcharge_calc, total_meal_cost, total_cost_of_party, total_balance_due;
+int ID, adults, kids, num;
+bool valid;
+ifstream infile;
+ofstream outfile;
 
 using namespace std;
 
 int main()
 {
-	//const variables
-	const float tax_and_tip = .18;
-	const float kids_saving = .6;
-	const float surcharge = .07;
-	const float S = 21.75;
-	const float D = 25.80;
-
-
-	//declare variables
-	char meal_type, weekend;
-	float meal_cost, deposit, tax_and_tip_Calc, surcharge_calc, total_meal_cost, total_cost_of_party, total_balance_due;
-	int ID, adults, kids, num;
-	bool valid;
-	ifstream infile;
-	ofstream outfile;
-
 	cout << fixed << showpoint << setprecision(2);
-	
+
 	do {
 		valid = true;
 		cout << "Enter party ID \n";
@@ -133,7 +133,6 @@ int main()
 		}
 	} while (valid == false);
 
-	// My code works fine till here, then I have all these errors about the functions even though they are comments (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
 
 	infile.open("D:\\Input File.txt");
 	if (!infile)						//there was an error on open, file not found
@@ -144,7 +143,7 @@ int main()
 	cout << "Open the output file. \n";
 	outfile.open("D:\\Output File.txt");
 	infile >> num;
-	
+
 	while (!infile.eof())
 	{
 		outfile << " " << num << " ";
@@ -167,33 +166,34 @@ int main()
 
 	infile.close();
 	outfile.close();
+	return 0;
+}
 
-/*
  //Function 1
 
  //Function 2
- void cost_of_meal(kids, meal_cost)
- {
- kids = (meal_type * kids_savings)
- meal_cost = (meal_type * adults) + (meal_type * kids)
- }
+	void cost_of_meal(int kids, int meal_cost)
+	{
+		kids = (meal_type * kids_savings);
+		meal_cost = (meal_type * adults) + (meal_type * kids);
+	}
 
  //Function 3
-	void additional_cost(tip_calc, tax_calc, surcharge_calc)
+	void additional_cost(float tax_and_tip_calc, float surcharge_calc)
  {
  tax_and_tip_Calc = tax_ * meal_cost;
  subcharge_calc = subcharge * meal_cost;
  }
 
- //Function 4
- void Calc_total_and_output()
+	//Function 4
+ void Calc_total_and_output(float Total_balance_due)
  {
  Total_balance_due = meal_cost * tax_and_tip;
  cout << ID << "\t\t" setw(10) << adults "\t\t" setw(10) << kids "\t\t" setw(10) << meal_cost;
  cout << surcharge_calc << "\t\t" setw(10) << tax_and_tip_calc;
  cout << total_cost_of_party << "\t\t" << setw(10) << deposit << "\t\t" << setw(10) << total_balance_due << endl;
  }
- */
+ 
 system("pause");
 return 0;
 }
